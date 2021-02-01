@@ -5,6 +5,19 @@
 
 
   tasks:
-  - name: install htop
+  - name: install packages
     package: 
-      name: htop
+      name: 
+        - htop
+        - copyq
+        - fzf
+        - ferdi
+        - guake
+        - docker.io
+        - nmap
+        - nodejs
+        - npm
+        - openjdk-14-jre
+        - python3-pip
+        - python3
+        - rclone
