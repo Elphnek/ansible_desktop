@@ -23,9 +23,9 @@
         - rclone
         - vagrant
         -snapd
-
+        
 - name: install snap packages
-  community.general.snap:
+  snap:
     name:
       - spotify
       - ngrok
