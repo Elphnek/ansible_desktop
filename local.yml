@@ -21,5 +21,4 @@
         - python3-pip
         - python3
         - rclone
-        - ngrok
         - vagrant
