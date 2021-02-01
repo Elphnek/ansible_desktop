@@ -23,12 +23,12 @@
         - rclone
         - vagrant
         - snapd
-
-  - name: install snap packages
-    command: snap install spotify ngrok p3x-onenote keepassxc code
   
   - name: downloading chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
+    
+  - name: install snap packages
+    command: snap install spotify ngrok p3x-onenote keepassxc code
