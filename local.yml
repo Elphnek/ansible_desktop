@@ -22,13 +22,7 @@
         - python3
         - rclone
         - vagrant
-        -snapd
+        - snapd
 
   - name: install snap packages
-    snap:
-      name:
-        - spotify
-        - ngrok
-        - p3x-onenote
-        - keepassxc
-        - code
+    command: snap install spotify ngrok p3x-onenote keepassxc code
