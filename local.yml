@@ -30,5 +30,5 @@
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
   - name: install snap packages
-    command: snap install spotify ngrok p3x-onenote keepassxc code
+    command: snap install spotify ngrok p3x-onenote keepassxc code --classic
     ignore_errors: yes
