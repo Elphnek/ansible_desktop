@@ -29,6 +29,22 @@
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
-  - name: install snap packages
-    command: snap install spotify ngrok p3x-onenote keepassxc code --classic
+  - name: install spotify using snap 
+    command: snap install spotify 
+    ignore_errors: yes
+
+  - name: install ngrok using snap 
+    command: snap install ngrok  
+    ignore_errors: yes
+
+  - name: install oneNote snap 
+    command: snap install p3x-onenote 
+    ignore_errors: yes
+
+  - name: install keepassxc using snap 
+    command: snap install keepassxc
+    ignore_errors: yes
+  
+  - name: install vscode using snap 
+    command: snap install code --classic 
     ignore_errors: yes
