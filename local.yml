@@ -48,3 +48,7 @@
   - name: install vscode using snap 
     command: snap install code --classic 
     ignore_errors: yes
+    
+  - name: install virtualbox using snap
+    command: snap install virtualbox
+    ignore_errors: yes
