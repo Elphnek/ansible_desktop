@@ -22,6 +22,7 @@
         - rclone
         - vagrant
         - snapd
+        - virtualbox
   
   - name: downloading chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -47,8 +48,4 @@
   
   - name: install vscode using snap 
     command: snap install code --classic 
-    ignore_errors: yes
-    
-  - name: install virtualbox using snap
-    command: snap install virtualbox
     ignore_errors: yes
