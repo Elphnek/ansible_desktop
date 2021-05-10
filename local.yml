@@ -50,3 +50,7 @@
   - name: install vscode using snap 
     command: snap install code --classic 
     ignore_errors: yes
+    
+  - name: install notepad++ using snap 
+    command: snap install notepad-plus-plus
+    ignore_errors: yes
