@@ -67,11 +67,15 @@
   - name: installing VLC media player
     command: snap install vlc
     ignore_errors: yes
-    
+  
+  - name: Create autostart directory
+    file:
+      path: ~/.config/autostart
+      state: directory
+  
   - name: Set Startup applications
     file:
       state: link
-      become: false
       force: yes
       src: "/usr/share/applications/{{ item }}"
       dest: ~/.config/autostart/{{ item }}
