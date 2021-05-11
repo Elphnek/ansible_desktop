@@ -67,19 +67,24 @@
   - name: installing VLC media player
     command: snap install vlc
     ignore_errors: yes
+    
+    vars_promt:
+    - name: username
+        prompt: What is your username?
+        private: no
+        
+    - name: Create autostart directory
+      file:
+        path: /home/{{ username }}/.config/autostart
+        state: directory
   
-  - name: Create autostart directory
-    file:
-      path: ~/.config/autostart
-      state: directory
-  
-  - name: Set Startup applications
-    file:
-      state: link
-      force: yes
-      src: "/usr/share/applications/{{ item }}"
-      dest: ~/.config/autostart/{{ item }}
-    with_items:
-      - copyq.desktop
-      - ferdi.desktop
-      - guake.desktop
+    - name: Set Startup applications
+      file:
+        state: link
+        force: yes
+        src: "/usr/share/applications/{{ item }}"
+        dest: /home/{{ username }}/.config/autostart/{{ item }}
+      with_items:
+        - copyq.desktop
+        - ferdi.desktop
+        - guake.desktop
