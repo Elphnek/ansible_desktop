@@ -67,3 +67,14 @@
   - name: installing VLC media player
     command: snap install vlc
     ignore_errors: yes
+    
+  - name: Set Startup applications
+    file:
+      state: link
+      force: yes
+      src: "{{ ansible_env.PWD }}/roles/gnomeshell/files/autostart/{{ item }}"
+      dest: ~/.config/autostart/{{ item }}
+    with_items:
+      - copyq.desktop
+      - ferdi.desktop
+      - guake.desktop
