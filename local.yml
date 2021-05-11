@@ -1,11 +1,11 @@
 ---
 - hosts: localhost
-  vars_promt:
-    - name: username
-      prompt: What is your username?
-      private: no
   connection: local
   become: true
+  vars_promt:
+  - name: username
+    prompt: What is your username?
+    private: no
 
 
   tasks:
