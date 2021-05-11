@@ -2,11 +2,6 @@
 - hosts: localhost
   connection: local
   become: true
-  vars_promt:
-  - name: username
-    prompt: What is your username?
-    private: no
-
 
   tasks:
   - name: install packages
@@ -77,13 +72,24 @@
       path: /home/{{ username }}/.config/autostart
       state: directory
   
-  - name: Set Startup applications
-    file:
-      state: link
-      force: yes
-      src: "/usr/share/applications/{{ item }}"
-      dest: /home/{{ username }}/.config/autostart/{{ item }}
-    with_items:
-      - copyq.desktop
-      - ferdi.desktop
-      - guake.desktop
+  vars_prompt:
+    - name: "username"
+      prompt: What is your username?
+      private: no 
+
+  tasks:
+    - name: Create autostart directory
+      file:
+        path: /home/{{ username }}/.config/autostart
+        state: directory
+  
+    - name: Set Startup applications
+      file:
+        state: link
+        force: yes
+        src: "/usr/share/applications/{{ item }}"
+        dest: /home/{{ username }}/.config/autostart/{{ item }}
+      with_items:
+        - copyq.desktop
+        - ferdi.desktop
+        - guake.desktop
