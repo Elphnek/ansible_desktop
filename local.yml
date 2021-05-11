@@ -73,8 +73,11 @@
       state: link
       force: yes
       src: "/usr/share/applications/{{ item }}"
-      dest: ~/.config/autostart/{{ item }}
+      dest: /home/{{ user }}/.config/autostart/{{ item }}
     with_items:
       - copyq.desktop
       - ferdi.desktop
       - guake.desktop
+    with_users:
+      - phnek
+      - elphnek
