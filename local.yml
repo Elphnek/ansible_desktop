@@ -72,7 +72,7 @@
     file:
       state: link
       force: yes
-      src: "{{ ansible_env.PWD }}/roles/gnomeshell/files/autostart/{{ item }}"
+      src: "/usr/share/applications/{{ item }}"
       dest: ~/.config/autostart/{{ item }}
     with_items:
       - copyq.desktop
