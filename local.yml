@@ -71,13 +71,11 @@
   - name: Set Startup applications
     file:
       state: link
+      become: false
       force: yes
       src: "/usr/share/applications/{{ item }}"
-      dest: /home/{{ user }}/.config/autostart/{{ item }}
+      dest: ~/.config/autostart/{{ item }}
     with_items:
       - copyq.desktop
       - ferdi.desktop
       - guake.desktop
-    with_users:
-      - phnek
-      - elphnek
