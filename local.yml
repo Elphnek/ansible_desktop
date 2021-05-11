@@ -63,3 +63,7 @@
   - name: installing OBS studio 
     command: apt install obs-studio
     ignore_errors: yes
+    
+  - name: installing VLC media player
+    command: snap install vlc
+    ignore_errors: yes
