@@ -13,8 +13,18 @@
   - name: install packages
     package: 
       name: 
-        - htop
         - copyq
+        - adb
+        - awscli
+        - curl
+        - gzip
+        - nvm
+        - whois
+        - photoflare
+        - sqlmap
+        - openjdk-14-jre
+        - openjdk-14-jre-headless
+        - openjdk-11-jdk
         - fzf
         - guake
         - docker.io
@@ -72,7 +82,19 @@
   - name: installing VLC media player
     command: snap install vlc
     ignore_errors: yes
-        
+
+  - name: installing libreoffice
+    command: snap install libreoffice
+    ignore_errors: yes
+
+  - name: installing slack
+    command: snap install slack
+    ignore_errors: yes
+
+  - name: installing postman
+    command: snap install postman
+    ignore_errors: yes
+
   - name: Create autostart directory
     file:
       path: /home/{{ username.stdout }}/.config/autostart
