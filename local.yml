@@ -10,7 +10,7 @@
     register: username
     ignore_errors: true
 
-  -name: update, upgrade & autoremove 
+  - name: update, upgrade & autoremove 
     command: apt update && apt upgrade && apt autoremove
     
   - name: install packages
