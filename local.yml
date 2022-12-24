@@ -18,6 +18,7 @@
   
   - name: Run apt autoremove 
     commang: apt autoremove -y
+    
   - name: install packages
     package: 
       name: 
