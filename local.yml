@@ -10,9 +10,14 @@
     register: username
     ignore_errors: true
 
-  -name: update, upgrade & autoremove 
-    command: apt update && apt upgrade && apt autoremove
-    
+  - name: Run apt update
+    command: apt update 
+
+  - name: Run apt upgrade
+    commang: apt upgrade -y
+  
+  - name: Run apt autoremove 
+    commang: apt autoremove -y
   - name: install packages
     package: 
       name: 
