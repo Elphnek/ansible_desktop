@@ -10,6 +10,9 @@
     register: username
     ignore_errors: true
 
+  -name: update, upgrade & autoremove 
+    command: apt update && apt upgrade && apt autoremove
+    
   - name: install packages
     package: 
       name: 
@@ -18,12 +21,8 @@
         - awscli
         - curl
         - gzip
-        - nvm
         - whois
         - photoflare
-        - sqlmap
-        - openjdk-14-jre
-        - openjdk-14-jre-headless
         - openjdk-11-jdk
         - fzf
         - guake
@@ -31,7 +30,6 @@
         - nmap
         - nodejs
         - npm
-        - openjdk-14-jre
         - python3-pip
         - python3
         - rclone
@@ -40,12 +38,16 @@
         - virtualbox
         - net-tools
         - ffmpeg
+    async: 60
   
   - name: downloading chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
+
+  - name: installing nvm
+    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
 
   - name: install spotify using snap 
     command: snap install spotify 
@@ -76,7 +78,7 @@
     ignore_errors: yes
     
   - name: installing OBS studio 
-    command: apt install obs-studio
+    command: apt install obs-studio -y 
     ignore_errors: yes
     
   - name: installing VLC media player
