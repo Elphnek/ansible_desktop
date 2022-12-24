@@ -14,11 +14,11 @@
     command: apt update 
 
   - name: Run apt upgrade
-    commang: apt upgrade -y
+    command: apt upgrade -y
   
   - name: Run apt autoremove 
-    commang: apt autoremove -y
-    
+    command: apt autoremove -y
+
   - name: install packages
     package: 
       name: 
