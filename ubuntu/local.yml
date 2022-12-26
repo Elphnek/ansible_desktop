@@ -53,8 +53,8 @@
       force: yes
       backup: yes  
 
-  - name: Setting up Guake prefs "{{ playbook_dir }}"/files/bash/guake_prefs
-    command: guake --restore-preferences 
+  - name: Setting up Guake prefs 
+    command: guake --restore-preferences "{{ playbook_dir }}"/files/guake/guake_prefs
 
   - name: downloading chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
