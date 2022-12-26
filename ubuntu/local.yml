@@ -43,9 +43,19 @@
         - snapd
         - virtualbox
         - net-tools
+        - dconf-cli
         - ffmpeg
-    async: 60
-  
+
+  - name: Setting up bashrc
+    copy:
+      src: "{{ playbook_dir }}"/files/bash/
+      dest: /home/{{ username.stdout }}/
+      force: yes
+      backup: yes  
+
+  - name: Setting up Guake prefs "{{ playbook_dir }}"/files/bash/guake_prefs
+    command: guake --restore-preferences 
+
   - name: downloading chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
@@ -74,9 +84,9 @@
   - name: install vscode using snap 
     command: snap install code --classic 
     ignore_errors: yes
-    
-  - name: install notepad++ using snap 
-    command: snap install notepad-plus-plus
+
+  - name: install ferdium using snap
+    command: snap install ferdium --classic
     ignore_errors: yes
     
   - name: add OBS repo 
@@ -89,10 +99,6 @@
     
   - name: installing VLC media player
     command: snap install vlc
-    ignore_errors: yes
-
-  - name: installing libreoffice
-    command: snap install libreoffice
     ignore_errors: yes
 
   - name: installing slack
