@@ -1,7 +1,6 @@
 [general]
 abbreviate-tab-names=true
 compat-delete='delete-sequence'
-custom-command-file='/home/phnek/.config/guake/session.json'
 display-n=0
 gtk-prefer-dark-theme=true
 gtk-theme-name='Yaru-dark'
