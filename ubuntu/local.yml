@@ -60,15 +60,18 @@
     command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
   
   - name: installing golang step 1
-    command:  rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+    command:  rm -rf /usr/local/go
 
   - name: installing golang step 2
-    command: export PATH=$PATH:/usr/local/go/bin
+    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
   - name: installing golang step 3
+    command: export PATH=$PATH:/usr/local/go/bin
+
+  - name: installing golang step 4
     command: go version
 
-  - name: downloading chrome .deb file
+  - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
   - name: installing chrome file
