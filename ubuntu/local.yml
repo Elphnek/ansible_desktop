@@ -66,7 +66,7 @@
     command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
   - name: installing golang step 3
-    command: export PATH=$PATH:/usr/local/go/bin
+    command: export PATH=$PATH:/usr/local/go/bin 
 
   - name: installing golang step 4
     command: go version
