@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: save username 
+    command: whoami
+    become: false
+    register: username
+    ignore_errors: true
+  
+  - name: install packages
+    package: 
+      name: 
+        - git
+
+  - name: downloading go .tar file
+    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
+  
+  - name: installing golang step 1
+    command:  rm -rf /usr/local/go
+
+  - name: installing golang step 2
+    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+
+  - name: setting golang PATH
+    shell: export PATH=$PATH:/usr/local/go/bin
+  
+  - name: downloading Nuclei
+    commang: wget https://github.com/projectdiscovery/nuclei/releases/download/v2.9.15/nuclei_2.9.15_linux_amd64.zip 
+  
+  - name: installing Nuclei
+    command: unzip nuclei_2.9.15_linux_amd.zip -d /usr/local
+
+  - name: exporting nuclei PATH
+    shell: export PATH=$PATH:/usr/local/nuclei
+  
+

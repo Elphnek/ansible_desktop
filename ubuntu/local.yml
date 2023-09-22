@@ -65,6 +65,9 @@
   - name: installing golang step 2
     command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
+  - name: setting golang PATH
+    shell: export PATH=$PATH:/usr/local/go/bin
+
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
