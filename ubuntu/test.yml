@@ -31,7 +31,7 @@
     command: wget https://github.com/projectdiscovery/nuclei/releases/download/v2.9.15/nuclei_2.9.15_linux_amd64.zip 
   
   - name: installing Nuclei
-    command: unzip nuclei_2.9.15_linux_amd.zip -d /usr/local
+    command: unzip ./nuclei_2.9.15_linux_amd.zip -d /usr/local
 
   - name: exporting nuclei PATH
     shell: export PATH=$PATH:/usr/local/nuclei
