@@ -12,6 +12,9 @@
   
   - name: downloading Nuclei
     command: wget https://download.virtualbox.org/virtualbox/7.0.10/virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+  
+  - name: installing virtual-Box .deb
+    command: dpkg -i virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
 
   - name: downloading Nuclei
     shell: wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg 
@@ -22,7 +25,4 @@
   - name: install packages
     package: 
       name: 
-        - virtualbox-6.1 
-
-  
-
+        - virtualbox-7.0 
