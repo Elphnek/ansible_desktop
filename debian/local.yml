@@ -72,17 +72,8 @@
       name: 
         - virtualbox-7.0 
   
-  - name: downloading go .tar file
-    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
-  
-  - name: installing golang step 1
-    command:  rm -rf /usr/local/go
-
-  - name: installing golang step 2
-    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
-
-  - name: setting golang PATH
-    shell: export PATH=$PATH:/usr/local/go/bin
+  - name: installing ansible golang support for future script.
+    command: sudo ansible-galaxy install fubarhouse.golang
 
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
