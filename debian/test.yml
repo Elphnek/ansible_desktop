@@ -10,11 +10,12 @@
     register: username
     ignore_errors: true
   
-  - name: downloading virtualBod deb
+  - name: downloading virtualBox deb
     command: wget https://download.virtualbox.org/virtualbox/7.0.10/virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
   
   - name: installing virtual-Box .deb
     command: dpkg -i virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+    ignore_errors: true
   
   - name: Run apt update
     command: apt --fix-broken install
