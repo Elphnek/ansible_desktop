@@ -10,17 +10,14 @@
     register: username
     ignore_errors: true
   
-  - name: downloading virtualBox deb
-    command: wget https://download.virtualbox.org/virtualbox/7.0.10/virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+  - name: downloading go .tar file
+    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
   
-  - name: installing virtual-Box .deb
-    command: dpkg -i virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
-    ignore_errors: true
-  
-  - name: Run apt --fix-broken install 
-    command: apt --fix-broken install
-  
-  - name: install packages
-    package: 
-      name: 
-        - virtualbox-7.0 
+  - name: installing golang step 1
+    command:  rm -rf /usr/local/go
+
+  - name: installing golang step 2
+    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+
+  - name: setting golang PATH
+    shell: export PATH=$PATH:/usr/local/go/bin

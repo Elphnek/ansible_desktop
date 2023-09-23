@@ -57,6 +57,21 @@
   - name: Setting up Guake prefs 
     command: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
 
+  - name: downloading virtualBox deb
+    command: wget https://download.virtualbox.org/virtualbox/7.0.10/virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+  
+  - name: installing virtualBox .deb
+    command: dpkg -i virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+    ignore_errors: true
+  
+  - name: Run apt --fix-broken install 
+    command: apt --fix-broken install -y
+  
+  - name: install packages
+    package: 
+      name: 
+        - virtualbox-7.0 
+  
   - name: downloading go .tar file
     command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
   
