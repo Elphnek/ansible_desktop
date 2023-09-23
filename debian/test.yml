@@ -1,0 +1,4 @@
+---
+- hosts: localhost
+  roles:
+    - fubarhouse.golangalkfgh;awshg;ashfg
