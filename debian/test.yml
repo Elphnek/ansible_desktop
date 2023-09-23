@@ -14,10 +14,10 @@
       ignore_errors: yes
 
     - name: Set Go PATH
-    environment:
-      PATH: "{{ ansible_env.PATH }}:/usr/local/go/bin"
-    become: no
-    ignore_errors: yes
+      environment:
+        PATH: "{{ ansible_env.PATH }}:/usr/local/go/bin"
+      become: no
+      ignore_errors: yes
 
     - name: Run a Go command
       command: /usr/local/go/bin/go version
