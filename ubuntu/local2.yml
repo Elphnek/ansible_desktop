@@ -1,0 +1,123 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: save username 
+    command: whoami
+    become: false
+    register: username
+    ignore_errors: true
+
+  - name: Run apt update
+    command: apt update 
+
+  - name: Run apt upgrade
+    command: apt upgrade -y
+  
+  - name: Run apt autoremove 
+    command: apt autoremove -y
+
+  - name: install packages
+    package: 
+      name: 
+        - copyq
+        - adb
+        - awscli
+        - curl
+        - gzip
+        - whois
+        - photoflare
+        - openjdk-11-jdk
+        - fzf
+        - guake
+        - docker.io
+        - nmap
+        - nodejs
+        - npm
+        - python3-pip
+        - python3
+        - rclone
+        - vagrant
+        - snapd
+        - virtualbox
+        - net-tools
+        - dconf-cli
+        - ffmpeg
+
+  - name: Setting up bashrc
+    copy:
+      src: "{{ playbook_dir }}/files/bash/"
+      dest: /home/{{ username.stdout }}/
+      force: yes
+      backup: yes  
+
+  - name: Setting up Guake prefs 
+    command: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
+
+  - name: Downloading Chrome .deb file
+    command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+  - name: installing chrome file
+    command: dpkg -i google-chrome-stable_current_amd64.deb
+
+  - name: install spotify using snap 
+    command: snap install spotify 
+    ignore_errors: yes
+
+  - name: install ngrok using snap 
+    command: snap install ngrok  
+    ignore_errors: yes
+
+  - name: install oneNote snap 
+    command: snap install p3x-onenote 
+    ignore_errors: yes
+
+  - name: install keepassxc using snap 
+    command: snap install keepassxc
+    ignore_errors: yes
+  
+  - name: install vscode using snap 
+    command: snap install code --classic 
+    ignore_errors: yes
+
+  - name: install ferdium using snap
+    command: snap install ferdium --classic
+    ignore_errors: yes
+    
+  - name: add OBS repo 
+    command: add-apt-repository ppa:obsproject/obs-studio
+    ignore_errors: yes
+    
+  - name: installing OBS studio 
+    command: apt install obs-studio -y 
+    ignore_errors: yes
+    
+  - name: installing VLC media player
+    command: snap install vlc
+    ignore_errors: yes
+
+  - name: installing slack
+    command: snap install slack
+    ignore_errors: yes
+
+  - name: installing postman
+    command: snap install postman
+    ignore_errors: yes
+
+  - name: Create autostart directory
+    file:
+      path: /home/{{ username.stdout }}/.config/autostart
+      state: directory
+
+  - name: Set Startup applications
+    file:
+      state: link
+      force: yes
+      src: "/usr/share/applications/{{ item }}"
+      dest: /home/{{ username.stdout }}/.config/autostart/{{ item }}
+    with_items:
+      - com.github.hluk.copyq.desktop
+      - ferdi.desktop
+      - guake.desktop

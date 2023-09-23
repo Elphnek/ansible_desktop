@@ -1,4 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -66,7 +65,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1='\[\033]0;${PWD}\007\]\033[01;32m\]\$\u:\[\033[01;34m\]\w\[\033[00m\]\033[00m\] \n> '
+    PS1='\[\033[01;31m\]┌[\[\033\[\033]0;${PWD}\007\]\[\033[01;32m\]\u\[\033[00m\]\[\033[01;31m\]]─[\[\033[01;33m\]\[\033[01;34m\]\w\[\033[01;31m\]]─[\[\033[01;33m\]\T\[\033[01;31m\]]\n\[\033[01;31m\]└╼\[\033[01;32m\]\$ \[\033[00m\]'
     ;;
 *)
     ;;
