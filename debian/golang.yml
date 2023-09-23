@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - { role: golang, golang_version: 1.21.1 }
