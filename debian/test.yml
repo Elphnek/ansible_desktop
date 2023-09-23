@@ -4,7 +4,7 @@
   become: yes
   roles:
     - role: gantsign.golang
-      golang_gopath: "$HOME/workspace-go"
+      golang_gopath: "$HOME/workspace-go" 
 
   tasks:
     - name: save username
