@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  roles: 
+    - role: gantsign.golang
+      golang_gopath: '$HOME/workspace-go'
   connection: local
   become: true
 
@@ -9,5 +12,3 @@
     become: false
     register: username
     ignore_errors: true
-  
-  - import_playbook: "{{ playbook_dir }}/debian/golang/tasks/main.yml"
