@@ -1,10 +1,11 @@
 ---
 - hosts: local
-  roles:
-     - role: gantsign.golang
-       golang_gopath: '$HOME/workspace-go'
   connection: local
   become: true
+  roles:
+     - role: gantsign.golang
+       golang_gopath: "$HOME/workspace-go"
+  
 
   tasks:
   - name: save username 
