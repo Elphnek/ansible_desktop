@@ -85,9 +85,6 @@
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
-  - name: installing nvm
-    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
-
   - name: install spotify using snap 
     command: snap install spotify 
     ignore_errors: yes
