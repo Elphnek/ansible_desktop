@@ -10,5 +10,4 @@
     register: username
     ignore_errors: true
   
-  - name: downloading go .tar file
-    command: ansible-playbook "{{ playbook_dir }}/golang/tasks/main.yml"
+  - import_playbook: "{{ playbook_dir }}/debian/golang/tasks/main.yml"
