@@ -79,8 +79,11 @@
     include_role:
       name: fubarhouse.golang
 
+  - name: exporting env vars
+    shell: "{{ playbook_dir }}/files/scripts/env_vars.sh"
+
   - name: installing nuclei
-    shell: /usr/local/go/bin/go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    shell: /usr/local/go/bin/go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
 
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
