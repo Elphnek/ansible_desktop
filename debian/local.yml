@@ -23,6 +23,8 @@
     package: 
       name: 
         - copyq
+        - build-essentials
+        - dkms
         - adb
         - awscli
         - curl
@@ -41,7 +43,6 @@
         - rclone
         - vagrant
         - snapd
-        - virtualbox
         - net-tools
         - dconf-cli
         - ffmpeg
