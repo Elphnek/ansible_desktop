@@ -10,13 +10,16 @@
     register: username
     ignore_errors: true
   
-  - name: downloading Nuclei
+  - name: downloading virtualBod deb
     command: wget https://download.virtualbox.org/virtualbox/7.0.10/virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
   
   - name: installing virtual-Box .deb
     command: dpkg -i virtualbox-7.0_7.0.10-158379~Debian~bookworm_amd64.deb
+  
+  - name: Run apt update
+    command: apt --fix-broken install
 
-  - name: downloading Nuclei
+  - name: downloading signutare and regsitring 
     shell: wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg 
 
   - name: Run apt update
