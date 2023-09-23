@@ -9,16 +9,6 @@
     become: false
     register: username
     ignore_errors: true
-    
-  - name: installing ansible golang support for future script.
-    command: sudo ansible-galaxy install fubarhouse.golang
 
-  - name: include golang role
-    include_role:
-      name: fubarhouse.golang
-
-  - name: exporting env vars
-    shell: "{{ playbook_dir }}/files/scripts/env_vars.sh"
-
-  - name: installing nuclei
-    command: go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+  - name: installing nvm
+    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
