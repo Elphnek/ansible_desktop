@@ -23,7 +23,7 @@
     package: 
       name: 
         - copyq
-        - build-essentials
+        - build-essential
         - dkms
         - adb
         - awscli
@@ -74,6 +74,10 @@
   
   - name: installing ansible golang support for future script.
     command: sudo ansible-galaxy install fubarhouse.golang
+
+  - name: include golang role
+    include_role:
+      name: fubarhouse.golang
 
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
