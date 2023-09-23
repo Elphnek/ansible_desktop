@@ -1,0 +1,12 @@
+---
+- name: Update apt cache
+  apt: update-cache=yes cache_valid_time=86400
+  sudo: yes
+
+- name: Update all packages
+  apt: upgrade=dist
+  sudo: yes
+
+- name: Ensure that ansible_cache_dir directory exists
+  file: path={{ ansible_cache_dir }} state=directory
+  sudo: yes
