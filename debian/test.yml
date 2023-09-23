@@ -11,13 +11,4 @@
     ignore_errors: true
   
   - name: downloading go .tar file
-    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
-  
-  - name: installing golang step 1
-    command:  rm -rf /usr/local/go
-
-  - name: installing golang step 2
-    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
-
-  - name: setting golang PATH
-    shell: export PATH=$PATH:/usr/local/go/bin
+    command: ansible-playbook "{{ playbook_dir }}/golang/tasks/main.yml"
