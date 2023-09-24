@@ -62,8 +62,14 @@
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
-  - name: installing nvm
+  - name: donwloading nvm install.sh
     command: wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
+  
+  - name: adding execution for install.sh 
+    command: chmod +x ./install.sh
+
+  - name: installing nvm
+    command: bash ./install.sh
 
   - name: install spotify using snap 
     command: snap install spotify 
