@@ -69,7 +69,10 @@
     file: dest=./install.sh mode=a+x
 
   - name: installing nvm
-    command: bash install.sh
+    script: install.sh
+    register: out
+
+  - debug: var=out.stdout_lines
 
   - name: install spotify using snap 
     command: snap install spotify 
