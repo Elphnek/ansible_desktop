@@ -92,7 +92,10 @@
 
   - name: install nuclei
     command: go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    register: out2
     ignore_errors: yes
+  
+  - debug: var=out2.stdout_lines
 
   - name: install yarn
     command: npm install --global yarn
