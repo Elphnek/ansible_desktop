@@ -72,7 +72,7 @@
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
   - name: installing nvm
-    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
   - name: install spotify using snap 
     command: snap install spotify 
