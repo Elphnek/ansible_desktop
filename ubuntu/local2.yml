@@ -66,10 +66,10 @@
     command: wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
   
   - name: adding execution for install.sh 
-    command: chmod +x ./install.sh
+    file: dest=./install.sh mode=x
 
   - name: installing nvm
-    command: bash ./install.sh
+    command: bash install.sh
 
   - name: install spotify using snap 
     command: snap install spotify 
