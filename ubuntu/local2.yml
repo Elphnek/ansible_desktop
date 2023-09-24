@@ -54,13 +54,25 @@
       backup: yes  
 
   - name: Setting up Guake prefs 
-    command: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
+    shell: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
+
+  - name: downloading go .tar file
+    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
+  
+  - name: installing golang step 1
+    command:  rm -rf /usr/local/go
+
+  - name: installing golang step 2
+    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
+
+  - name: installing nvm
+    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
   - name: install spotify using snap 
     command: snap install spotify 
@@ -105,19 +117,3 @@
   - name: installing postman
     command: snap install postman
     ignore_errors: yes
-
-  - name: Create autostart directory
-    file:
-      path: /home/{{ username.stdout }}/.config/autostart
-      state: directory
-
-  - name: Set Startup applications
-    file:
-      state: link
-      force: yes
-      src: "/usr/share/applications/{{ item }}"
-      dest: /home/{{ username.stdout }}/.config/autostart/{{ item }}
-    with_items:
-      - com.github.hluk.copyq.desktop
-      - ferdi.desktop
-      - guake.desktop
