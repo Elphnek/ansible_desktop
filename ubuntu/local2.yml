@@ -91,10 +91,10 @@
     ignore_errors: yes
 
   - name: install nuclei
-    command: go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    script: "{{ playbook_dir }}/files/scripts/nuclei.sh"
     register: out2
     ignore_errors: yes
-  
+
   - debug: var=out2.stdout_lines
 
   - name: install yarn
