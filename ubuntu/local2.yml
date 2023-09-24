@@ -56,15 +56,6 @@
   - name: Setting up Guake prefs 
     shell: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
 
-  - name: downloading go .tar file
-    command: wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz 
-  
-  - name: installing golang step 1
-    command:  rm -rf /usr/local/go
-
-  - name: installing golang step 2
-    command: tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
-
   - name: Downloading Chrome .deb file
     command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
@@ -72,7 +63,7 @@
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
   - name: installing nvm
-    shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    command: wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
 
   - name: install spotify using snap 
     command: snap install spotify 
@@ -84,6 +75,18 @@
 
   - name: install oneNote snap 
     command: snap install p3x-onenote 
+    ignore_errors: yes
+
+  - name: install go snap
+    command: snap install go --classic
+    ignore_errors: yes
+
+  - name: install nuclei
+    command: go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    ignore_errors: yes
+
+  - name: install yarn
+    command: npm install --global yarn
     ignore_errors: yes
 
   - name: install keepassxc using snap 
