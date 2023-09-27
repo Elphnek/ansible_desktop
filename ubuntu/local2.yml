@@ -57,22 +57,25 @@
     shell: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
 
   - name: Downloading Chrome .deb file
-    command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    get_url:
+      url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      dest: ./google-chrome-stable_current_amd64.deb
+      mode: '0777'
 
   - name: installing chrome file
     command: dpkg -i google-chrome-stable_current_amd64.deb
 
   - name: donwloading nvm install.sh
-    command: wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
-  
-  - name: adding execution for install.sh 
-    file: dest=./install.sh mode=a+x
+    get_url: 
+      url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
+      dest: ./install.sh
+      mode: '0777'
 
   - name: installing nvm
     script: install.sh
     register: out
 
-  - debug: var=out.stdout_lines
+  - debug: var=out.stdout
 
   - name: install spotify using snap 
     command: snap install spotify 
