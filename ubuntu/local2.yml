@@ -55,7 +55,7 @@
       mode: '0644'
 
   - name: Setting up Guake prefs 
-    shell: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
+    command: guake --restore-preferences="{{ playbook_dir }}/files/guake/guake_prefs"
 
   - name: Downloading Chrome .deb file
     get_url:
