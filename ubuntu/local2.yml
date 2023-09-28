@@ -48,10 +48,11 @@
 
   - name: Setting up bashrc
     copy:
-      src: "{{ playbook_dir }}/files/bash/"
-      dest: /home/{{ username.stdout }}/
-      force: yes
-      backup: yes  
+      src: "{{ playbook_dir }}/files/bash/.bashrc"
+      dest: /home/{{ username.stdout }}/.bashrc
+      owner: "{{ username.stdout }}"
+      group: "{{ username.stdout }}"
+      mode: '0644'
 
   - name: Setting up Guake prefs 
     shell: guake --restore-preferences "{{ playbook_dir }}/files/guake/guake_prefs"
